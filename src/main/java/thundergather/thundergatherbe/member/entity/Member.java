@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import thundergather.thundergatherbe.global.entity.BaseEntity;
 import thundergather.thundergatherbe.meeting.entity.MeetingMember;
+import thundergather.thundergatherbe.member.entity.type.MemberRoleType;
 import thundergather.thundergatherbe.post.entity.Post;
 
 @Entity
@@ -37,6 +38,9 @@ public class Member extends BaseEntity {
       private String nickname;
 
       private String profileImageUrl;
+
+      @Column(nullable = false)
+      private MemberRoleType roleType;
 
       @Builder.Default
       @OneToMany(mappedBy = "member")
