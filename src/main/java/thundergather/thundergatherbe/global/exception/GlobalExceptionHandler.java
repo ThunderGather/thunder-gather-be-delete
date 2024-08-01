@@ -1,9 +1,7 @@
 package thundergather.thundergatherbe.global.exception;
 
-import static thundergather.thundergatherbe.global.exception.type.ErrorCode.INTERNAL_SERVER_ERROR;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -19,11 +17,4 @@ public class GlobalExceptionHandler {
             e.getErrorCode().getHttpStatus(), e.getErrorCode().getDescription());
       }
 
-
-      @ExceptionHandler(Exception.class)
-      public ErrorResponse exceptionHandler(Exception e){
-            log.error("Exception is occurred", e);
-            return new ErrorResponse(INTERNAL_SERVER_ERROR, HttpStatus.INTERNAL_SERVER_ERROR,
-                INTERNAL_SERVER_ERROR.getDescription());
-      }
 }
