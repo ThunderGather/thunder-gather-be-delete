@@ -36,12 +36,21 @@ public class AwsS3Service {
        * @param fileName      파일 이름
        */
       public void uploadToS3(MultipartFile multipartFile, String fileName) {
+            log.info("[uploadToS3] 시작");
             try (InputStream inputStream = multipartFile.getInputStream()) {
+                  log.info("[uploadToS3] inputStream: {}", inputStream);
                   amazonS3.putObject(new PutObjectRequest(bucketName, fileName, inputStream,
                           getObjectMetadata(multipartFile))
                           .withCannedAcl(CannedAccessControlList.PublicRead));
+                  log.info("[uploadToS3] 업로드 성공");
             } catch (IOException e) {
-                  log.error("IOException is occurred", e);
+                  log.error("IOException이 발생했습니다", e);
+                  throw new GlobalException(INTERNAL_SERVER_ERROR);
+            } catch (AmazonS3Exception e) {
+                  log.error("AmazonS3Exception이 발생했습니다", e);
+                  throw new GlobalException(INTERNAL_SERVER_ERROR);
+            } catch (Exception e) {
+                  log.error("예상치 못한 예외가 발생했습니다", e);
                   throw new GlobalException(INTERNAL_SERVER_ERROR);
             }
       }
