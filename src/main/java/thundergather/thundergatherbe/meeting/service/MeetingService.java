@@ -1,4 +1,4 @@
-package thundergather.thundergatherbe.member.service;
+package thundergather.thundergatherbe.meeting.service;
 
 import java.util.List;
 import thundergather.thundergatherbe.post.dto.PostListResponse;
