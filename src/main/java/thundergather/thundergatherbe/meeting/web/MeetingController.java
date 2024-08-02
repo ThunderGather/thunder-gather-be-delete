@@ -1,4 +1,4 @@
-package thundergather.thundergatherbe.member.web;
+package thundergather.thundergatherbe.meeting.web;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import thundergather.thundergatherbe.auth.config.LoginUser;
-import thundergather.thundergatherbe.member.service.MeetingService;
+import thundergather.thundergatherbe.meeting.service.MeetingService;
 import thundergather.thundergatherbe.post.dto.PostResponse;
 
 @RestController
