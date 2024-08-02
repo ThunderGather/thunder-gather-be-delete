@@ -1,4 +1,4 @@
-package thundergather.thundergatherbe.member.service.impl;
+package thundergather.thundergatherbe.meeting.service.impl;
 
 import static thundergather.thundergatherbe.global.exception.type.ErrorCode.DUPLICATE_MEETING;
 import static thundergather.thundergatherbe.global.exception.type.ErrorCode.OVER_MAX_PARTICIPANTS;
@@ -13,9 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import thundergather.thundergatherbe.global.exception.GlobalException;
 import thundergather.thundergatherbe.meeting.entity.Meeting;
 import thundergather.thundergatherbe.meeting.repository.MeetingRepository;
+import thundergather.thundergatherbe.meeting.service.MeetingService;
 import thundergather.thundergatherbe.member.entity.Member;
 import thundergather.thundergatherbe.member.repository.MemberRepository;
-import thundergather.thundergatherbe.member.service.MeetingService;
 import thundergather.thundergatherbe.post.dto.PostListResponse;
 import thundergather.thundergatherbe.post.dto.PostResponse;
 import thundergather.thundergatherbe.post.entity.Post;
