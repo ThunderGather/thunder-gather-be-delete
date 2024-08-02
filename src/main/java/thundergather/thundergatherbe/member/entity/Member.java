@@ -13,7 +13,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import thundergather.thundergatherbe.global.entity.BaseEntity;
-import thundergather.thundergatherbe.meeting.entity.MeetingMember;
+import thundergather.thundergatherbe.meeting.entity.Meeting;
 import thundergather.thundergatherbe.member.entity.type.MemberRoleType;
 import thundergather.thundergatherbe.post.entity.Post;
 
@@ -48,7 +48,7 @@ public class Member extends BaseEntity {
 
       @Builder.Default
       @OneToMany(mappedBy = "member")
-      private List<MeetingMember> myMeetingList = new ArrayList<>();
+      private List<Meeting> myMeetingList = new ArrayList<>();
 
       public void addPost(Post post) {
             this.posts.add(post);
@@ -60,12 +60,12 @@ public class Member extends BaseEntity {
             post.assignMember(null);
       }
 
-      public void addMeetingMemberList(MeetingMember meetingMember) {
+      public void addMeetingMemberList(Meeting meetingMember) {
             this.myMeetingList.add(meetingMember);
             meetingMember.assignToMember(this);
       }
 
-      public void removeMeetingMemberList(MeetingMember meetingMember) {
+      public void removeMeetingMemberList(Meeting meetingMember) {
             this.myMeetingList.remove(meetingMember);
             meetingMember.assignToMember(null);
       }
