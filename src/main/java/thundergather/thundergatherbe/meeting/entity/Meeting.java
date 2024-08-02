@@ -21,14 +21,14 @@ import thundergather.thundergatherbe.post.entity.Post;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MeetingMember extends BaseEntity {
+public class Meeting extends BaseEntity {
 
       @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Long id;
 
       @ManyToOne(fetch = FetchType.LAZY)
-      @JoinColumn(name = "meeting_id")
+      @JoinColumn(name = "post_id")
       private Post post;
 
       @ManyToOne(fetch = FetchType.LAZY)
