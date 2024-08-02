@@ -26,6 +26,10 @@ public enum ErrorCode {
       ALREADY_UNLIKED(HttpStatus.BAD_REQUEST, "이미 좋아요를 취소한 게시물입니다."),
       NICKNAME_DUPLICATION(HttpStatus.BAD_REQUEST, "이미 사용중인 닉네임입니다."),
       PASSWORD_EMPTY(HttpStatus.BAD_REQUEST, "비밀번호를 입력해주세요."),
+      OVER_MAX_PARTICIPANTS(HttpStatus.BAD_REQUEST, "모임 최대 인원수를 초과했습니다."),
+
+      // Meeting error
+      DUPLICATE_MEETING(HttpStatus.BAD_REQUEST, "이미 모임에 참여하셨습니다."),
       /**
        * 401 Unauthorized
        */
@@ -38,7 +42,6 @@ public enum ErrorCode {
       UNSUPPORTED_TOKEN(HttpStatus.UNAUTHORIZED, "지원하지 않는 토큰입니다."),
       WRONG_TYPE_TOKEN(HttpStatus.UNAUTHORIZED, "잘못된 유형의 토큰입니다."),
       EXPIRED_TOKEN(HttpStatus.UNAUTHORIZED, "액세스 토큰이 만료되었습니다. 재발급이 필요합니다."),
-
 
       /**
        * 404 Not Found

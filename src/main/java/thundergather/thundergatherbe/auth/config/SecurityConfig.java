@@ -1,6 +1,8 @@
 package thundergather.thundergatherbe.auth.config;
 
 import static org.springframework.http.HttpMethod.DELETE;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.PATCH;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
@@ -67,8 +69,10 @@ public class SecurityConfig {
             List<RequestMatcher> requestMatchers = List.of(
                     antMatcher("/api/v1/member"),
                     antMatcher(POST, "/api/v1/post"),
-                    antMatcher(PUT, "/api/v1/post"),
-                    antMatcher(DELETE, "/api/v1/post")
+                    antMatcher(PATCH, "/api/v1/post"),
+                    antMatcher(DELETE, "/api/v1/post"),
+                    antMatcher(POST, "/api/v1/meeting"),
+                    antMatcher(GET, "/api/v1/meeting")
             );
             return requestMatchers.toArray(RequestMatcher[]::new);
       }
