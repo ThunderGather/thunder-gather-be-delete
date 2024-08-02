@@ -18,14 +18,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import thundergather.thundergatherbe.global.entity.BaseEntity;
-import thundergather.thundergatherbe.meeting.entity.MeetingMember;
+import thundergather.thundergatherbe.meeting.entity.Meeting;
 import thundergather.thundergatherbe.member.entity.Member;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class Post extends BaseEntity {
 
       @Id
@@ -49,7 +49,7 @@ public class Post extends BaseEntity {
       private LocalTime desiredTime;
 
       @Column(nullable = false)
-      private int maxParticipants;
+      private Integer maxParticipants;
 
       private String description;
 
@@ -58,24 +58,31 @@ public class Post extends BaseEntity {
 
       private String openChatUrl;
 
-      @Column(nullable = false)
-      private int currentParticipants;
-
       @Builder.Default
       @OneToMany(mappedBy = "post")
-      private List<MeetingMember> meetingMembers = new ArrayList<>();
+      private List<Meeting> meetingMembers = new ArrayList<>();
 
+      public void updatePost(Post updatedPost) {
+            this.title = updatedPost.getTitle();
+            this.category = updatedPost.getCategory();
+            this.desiredDate = updatedPost.getDesiredDate();
+            this.desiredTime = updatedPost.getDesiredTime();
+            this.maxParticipants = updatedPost.getMaxParticipants();
+            this.description = updatedPost.getDescription();
+            this.location = updatedPost.getLocation();
+            this.openChatUrl = updatedPost.getOpenChatUrl();
+      }
 
       public void assignMember(Member member) {
             this.member = member;
       }
 
-      public void addMeetingMember(MeetingMember meetingMember) {
+      public void addMeetingMember(Meeting meetingMember) {
             this.meetingMembers.add(meetingMember);
             meetingMember.assignToPost(this);
       }
 
-      public void removeMeetingMember(MeetingMember meetingMember) {
+      public void removeMeetingMember(Meeting meetingMember) {
             this.meetingMembers.remove(meetingMember);
             meetingMember.assignToPost(null);
       }
