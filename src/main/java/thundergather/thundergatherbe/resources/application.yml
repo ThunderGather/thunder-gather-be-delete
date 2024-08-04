@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ${SPRING_DATASOURCE_URL:jdbc:mariadb://localhost:33062/thungether?characterEncoding=UTF-8&serverTimezone=Asia/Seoul}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:s5554549}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    database: mysql
+    defer-datasource-initialization: true
+
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+
+  jwt:
+    header: Authorization
+    prefix: "Bearer "
+    secret: bW92aWVNYXRlLXNwcmluZy1ib290LXByb2plY3Qtand0LXNlY3JldC1rZXkK
+    access-token-expire-time: 1800000
+    refresh-token-expire-time: 432000000
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 0B
+      location: /usr/share/temp
+      max-file-size: 30MB
+      max-request-size: 30MB
+
+cloud:
+  aws:
+    s3:
+      bucket: gotogether123
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY_ID}
+      secretKey: ${AWS_SECRET_ACCESS_KEY}
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false
