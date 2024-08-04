@@ -38,3 +38,5 @@ out/
 
 # Exclude application.yml
 src/main/resources/application.yml
+credentials/service-account-key.json
+.env
