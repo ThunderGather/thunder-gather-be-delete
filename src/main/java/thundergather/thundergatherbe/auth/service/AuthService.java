@@ -18,5 +18,5 @@ public interface AuthService {
 
       TokenDto reissue(ReissueDto request);
 
-
+      TokenDto generateToken(String email, String roleType);
 }

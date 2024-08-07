@@ -18,7 +18,6 @@ public class SignInDto {
       @Email
       private String email;
 
-      @NotBlank
       private String password;
 
 
