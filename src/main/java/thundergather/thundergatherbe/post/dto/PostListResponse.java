@@ -48,7 +48,7 @@ public class PostListResponse {
                   .memberId(post.getMember().getId())
                   .category(post.getCategory())
                   .title(post.getTitle())
-                  .dateTime(post.getCreatedAt())
+                  .dateTime(LocalDateTime.of(post.getDesiredDate(), post.getDesiredTime()))
                   .participants(memberList)
                   .build();
       }
