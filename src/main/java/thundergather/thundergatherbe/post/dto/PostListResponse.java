@@ -35,6 +35,7 @@ public class PostListResponse {
 
 
       public static PostListResponse fromEntity(Post post) {
+
             List<MemberDto> memberList = post.getMeetingMembers().stream()
                     .map(meeting -> MemberDto.builder()
                             .id(meeting.getMember().getId())

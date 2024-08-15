@@ -49,7 +49,6 @@ public class PostUpdateRequest {
             if (openChatUrl != null) {
                   postBuilder.openChatUrl(openChatUrl);
             }
-
             post.updatePost(postBuilder.build());
       }
 }
